@@ -61,9 +61,13 @@ class _MyLoginState extends State<LoginPage> {
     return Container(
       decoration: BoxDecoration(
                 // The gradient property is used here
-                gradient: LinearGradient(
+                gradient: LinearGradient(                  
                   // Define the colors for the gradient
-                  colors: [Colors.red, Colors.blue],
+                  colors: [
+                    Theme.of(context).colorScheme.secondaryFixed,
+                    Theme.of(context).colorScheme.secondaryFixedDim, 
+                    Theme.of(context).colorScheme.surfaceDim,
+                ],
                   // Optional: Define the start and end alignment
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -97,7 +101,11 @@ class _MyLoginState extends State<LoginPage> {
                       
                       ],
                       leading:IconButton(
-                         onPressed: (){},
+                         onPressed: (){
+                          Navigator.of(context).pop(
+                           MaterialPageRoute(builder: (context)=> LoginPage())
+                          );
+                         },
                         icon: Icon(Icons.chevron_left),
                         color:theme.colorScheme.primary,
                         iconSize: 4.hp,) ,

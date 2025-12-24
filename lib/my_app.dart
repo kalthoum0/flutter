@@ -23,6 +23,11 @@ class MyApp extends StatelessWidget {
           error: Color(0xFFB00020),
           background: Colors.white,
           primaryContainer: Colors.grey.withOpacity(0.3),
+          secondaryContainer: Color(0xFF3E8E41),
+          onSecondaryContainer:Color(0xFF5FAF65).withOpacity(0.3),
+          secondaryFixed:const Color(0xFFDECED1),
+          secondaryFixedDim: const Color(0xFFDCDCDC), 
+          surfaceDim: const Color(0xFFAED4FF),
         ),
         splashColor:Color(0xFF0a66a9) ,
         textTheme: GoogleFonts.cairoTextTheme().copyWith(
