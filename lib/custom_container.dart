@@ -25,7 +25,8 @@ class CustomContainer extends StatelessWidget {
         child:
         Container(          
             clipBehavior: Clip.hardEdge, 
-             width: w?? 11.wp,  
+            //  width: w?? 11.wp,
+            width: w?? MediaQuery.of(context).size.width * 0.45,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: color?? Theme.of(context).colorScheme.primary,

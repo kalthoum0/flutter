@@ -9,7 +9,8 @@ import 'my_app.dart';
 
 void main() {
   runApp(    
-    ScreentasiaInit(builder: (context,child){      
+    ScreentasiaInit(      
+      builder: (context,child){      
      return DevicePreview(      
       enabled: !kReleaseMode,
       builder: (context) => MyApp(),               

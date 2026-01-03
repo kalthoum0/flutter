@@ -41,13 +41,13 @@ class _MyStartUpState extends State<StartUp> {
       body: SingleChildScrollView(
         child: Container(
           
-          padding:EdgeInsets.symmetric(horizontal: 5),
+          // padding:EdgeInsets.symmetric(horizontal: 5),
           child: Column(                             
             children: [      
               CarouselSlider(                
                 options: CarouselOptions(height: 15.hp,
                 autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 1),
+                autoPlayInterval: const Duration(seconds: 2),
                 autoPlayAnimationDuration: const Duration(milliseconds: 700)),
                 items: ['assets/images/img_slider1.jpg','assets/images/img_slider2.jpg','assets/images/img_slider1.jpg'].map((i) {
                   return Builder(
@@ -72,12 +72,13 @@ class _MyStartUpState extends State<StartUp> {
                 padding: EdgeInsets.symmetric(horizontal: 0.5.wp),
                 child: Column(children: [
                    CustomContainer(
-                 w: 23.wp,
+                //  w: 24.wp,
+                w: MediaQuery.of(context).size.width *0.94,
                 Img: Image.asset('assets/images/bank_Icon.png', color:Colors.white,width: 4.wp,), 
                 Txt: CustomeText(text:  'الحساب المصرفي')             
               ),
-          
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,                
                 children: [
                 InkWell(
                   onTap:  (){
@@ -92,14 +93,14 @@ class _MyStartUpState extends State<StartUp> {
                     circleColor: Theme.of(context).colorScheme.onSecondaryContainer,
                     ),
                 ),
-          
+                        
                   CustomContainer(
                   Img: Image.asset('assets/images/smartPay.png',color:Colors.white,width: 4.wp,), 
                   Txt: CustomeText(text:  'سمارت باي') 
                   )
               ],),
           
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,                
                 children: [
                 CustomContainer(
                   Img: Image.asset('assets/images/customerServe.png',color:Colors.white,width: 4.wp,), 
@@ -121,7 +122,7 @@ class _MyStartUpState extends State<StartUp> {
                   Img: Image.asset('assets/images/location_Icon.png',color:Colors.white,width: 4.wp,), 
                   Txt: CustomeText(text:  'الفروغ') 
                   )
-              ],)
+              ],)                       
                 ],),
               )
           
