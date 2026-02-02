@@ -2,8 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:screentasia/screentasia.dart';
-import 'login_page.dart';
-import 'start_up.dart';
+import 'feature/startUp/presentation/page/start_up.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
           secondaryFixedDim: const Color(0xFFDCDCDC), 
           surfaceDim: const Color(0xFFAED4FF),
         ),
-        splashColor:Color(0xFF0a66a9) ,
+        // splashColor:Color(0xFF0a66a9) ,
         textTheme: GoogleFonts.cairoTextTheme().copyWith(
             titleLarge: TextStyle(
               fontFamily: GoogleFonts.cairo().fontFamily,

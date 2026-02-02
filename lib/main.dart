@@ -11,10 +11,10 @@ void main() {
   runApp(    
     ScreentasiaInit(      
       builder: (context,child){      
-     return DevicePreview(      
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(),               
-    );        
+      return DevicePreview(      
+        enabled: !kReleaseMode, /**enable ONLY in debug/dev**/
+        builder: (context) => MyApp(),               
+      );        
     })    
   );
 }

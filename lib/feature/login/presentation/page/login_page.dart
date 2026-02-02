@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screentasia/screentasia.dart';
-import 'custom_button.dart';
-import 'custom_textff.dart';
-import 'start_up.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_textff.dart';
+import '../../../startUp/presentation/page/start_up.dart';
 // import 'custom_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,14 +27,22 @@ class LoginPage extends StatefulWidget {
 class _MyLoginState extends State<LoginPage> {
 
   final _formKey = GlobalKey<FormState>();
-  bool _showpassword = false;
-  bool _obsc = true;
-  void _togglepass(){
-    setState(() {
-       _showpassword = !_showpassword;
-       _obsc = !_obsc;       
-    });   
-  }
+  // final ValueNotifier<bool> showPassword = ValueNotifier(false);
+
+  final ValueNotifier<bool> obsec = ValueNotifier(true);
+
+  // bool _showpassword = false;
+  // bool _obsc = true;
+  // void _togglepass(){
+  //   ValueListenableBuilder(
+  //     valueListenable: counter,
+  //     builder: (context, value, child) {
+  //       _showpassword = !_showpassword;
+  //      _obsc = !_obsc; 
+  //     }      
+  //   );        
+       
+  // }
   //Allows me to reach the text within the text feild
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passController = TextEditingController();
@@ -181,7 +189,7 @@ class _MyLoginState extends State<LoginPage> {
                       return 'Invalid phone number';
                     },
                                                                                                                     
-                                        ),
+                    ),
                     SizedBox(
                       height: 3.hp,
                     ),
@@ -192,26 +200,34 @@ class _MyLoginState extends State<LoginPage> {
                       height: 2.hp,
                     ),
               
-                    Customtextfeild(                        
-                      keyboardType: TextInputType.multiline,
-                      textInputAction: TextInputAction.done,                      
-                      controller: passController,
-                      obscureText: _obsc,
-                      validator: (value){
-                        if(value == null || value.isEmpty)
-                        {
-                          return 'Password is required';
-                        }
-                        if(value.length < 8){
-                          return 'the length of the password must atleast be 8 charecters';
-                        }
-                        return null;
-                    
-                      }, 
-                      prefixIcon: IconButton(
-                        icon: Icon( _showpassword? Icons.visibility: Icons.visibility_off,
-                        color:theme.colorScheme.primary),
-                        onPressed: _togglepass)
+                    ValueListenableBuilder(
+                      valueListenable:obsec ,
+                      builder: (context, value, child) {
+                        return Customtextfeild(                        
+                          keyboardType: TextInputType.multiline,
+                          textInputAction: TextInputAction.done,                      
+                          controller: passController,
+                          obscureText: value,
+                          validator: (value){
+                            if(value == null || value.isEmpty)
+                            {
+                              return 'Password is required';
+                            }
+                            if(value.length < 8){
+                              return 'the length of the password must atleast be 8 charecters';
+                            }
+                            return null;
+                        
+                          }, 
+                          prefixIcon: IconButton(
+                            icon: Icon( value? Icons.visibility: Icons.visibility_off,
+                            color:theme.colorScheme.primary),
+                            onPressed:(){                              
+                              obsec.value = !obsec.value;
+                            } 
+                            )
+                        );
+                      }
                     ),
                     SizedBox(
                       height: 5.hp,
