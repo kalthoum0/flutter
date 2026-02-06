@@ -22,11 +22,17 @@ class MyApp extends StatelessWidget {
           error: Color(0xFFB00020),
           background: Colors.white,
           primaryContainer: Colors.grey.withOpacity(0.3),
-          secondaryContainer: Color(0xFF3E8E41),
+          secondaryContainer: Color(0xFF3E8E41),        
+          tertiaryContainer: Color.fromARGB(255, 230, 241, 254),                    
           onSecondaryContainer:Color(0xFF5FAF65).withOpacity(0.3),
           secondaryFixed:const Color(0xFFDECED1),
           secondaryFixedDim: const Color(0xFFDCDCDC), 
           surfaceDim: const Color(0xFFAED4FF),
+          surfaceContainerHigh: Color(0xFFDEF2E4),
+          onSurfaceVariant:Color(0xFF629A6B) ,
+          surfaceContainerLow: Color(0xFFF1F1F1),
+          shadow: const Color.fromARGB(255, 113, 113, 113).withOpacity(0.3),
+           
         ),
         // splashColor:Color(0xFF0a66a9) ,
         textTheme: GoogleFonts.cairoTextTheme().copyWith(

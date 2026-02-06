@@ -25,7 +25,7 @@ class CustomContainer extends StatelessWidget {
           padding: const EdgeInsets.all(4.0),
           child: Container(          
               clipBehavior: Clip.hardEdge, 
-              height: 13.5.hp,            
+              height: 12.5.hp,            
               width: w?? MediaQuery.of(context).size.width * 0.45,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),

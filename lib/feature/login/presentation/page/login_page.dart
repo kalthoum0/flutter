@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_2/feature/Home/presentation/pages/Main.dart';
 import 'package:screentasia/screentasia.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_textff.dart';
@@ -238,19 +239,22 @@ class _MyLoginState extends State<LoginPage> {
                         //this .validate will trigger each validater in a textformfield                   
                         onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(builder: (context)=> SecondP())
-                              // );
+                              Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (_)=>const MainPage())
+                                  );                              
                               // Input is valid
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Login successful!'))
-                                );
+                              // ScaffoldMessenger.of(context)
+                              // ..hideCurrentSnackBar()
+                              // ..showSnackBar(
+                              //   SnackBar(content: Text('Login successful!'))
+                              //   );
+                                
                             }                            
-                          },                    
+                        },                    
               
-                        child: Text('تسجيل الدخول', style: theme.textTheme.titleMedium!.copyWith(
+                        child: Text('تسجيل الدخول', style: theme.textTheme.titleMedium?.copyWith(
                           color: theme.colorScheme.primary,
-                          fontSize: 6.sp,
+                          fontSize: 5.sp,
                           
                         ) ,
                         )

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/feature/startUp/presentation/widgets/custom_container.dart';
-import 'package:flutter_application_2/feature/widgets/custome_text.dart';
+import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:screentasia/screentasia.dart';
 
 import '../../../login/presentation/page/login_page.dart';
@@ -75,7 +75,7 @@ class _MyStartUpState extends State<StartUp> {
               //  w: 24.wp,
               w: MediaQuery.of(context).size.width *0.94,
               img: Image.asset('assets/images/bank_Icon.png', color:Colors.white,width: 4.wp,), 
-              Txt: CustomeText(text:  'الحساب المصرفي')             
+              Txt: CustomeText(text:  'الحساب المصرفي',padding:true,)             
             ),
             
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,                
@@ -88,7 +88,7 @@ class _MyStartUpState extends State<StartUp> {
                 },                 
                 child: CustomContainer(
                   img: Image.asset('assets/images/midwhats.png',color:Colors.white,width: 4.wp,), 
-                  Txt: CustomeText(text: 'ميد واتس') , 
+                  Txt: CustomeText(text: 'ميد واتس',padding:true) , 
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   circleColor: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
@@ -96,7 +96,7 @@ class _MyStartUpState extends State<StartUp> {
                       
                 CustomContainer(
                 img: Image.asset('assets/images/smartPay.png',color:Colors.white,width: 4.wp,), 
-                Txt: CustomeText(text:  'سمارت باي') 
+                Txt: CustomeText(text:  'سمارت باي',padding:true) 
                 )
             ],),
         
@@ -104,11 +104,11 @@ class _MyStartUpState extends State<StartUp> {
               children: [
               CustomContainer(
                 img: Image.asset('assets/images/customerServe.png',color:Colors.white,width: 4.wp,), 
-                Txt: CustomeText(text:  'اتصل بنا') 
+                Txt: CustomeText(text:  'اتصل بنا',padding:true ,) 
                 ),
                 CustomContainer(
                 img: Image.asset('assets/images/online.png',color:Colors.white,width: 4.wp,), 
-                Txt: CustomeText(text:  'الموقع الالكتروني') )
+                Txt: CustomeText(text:  'الموقع الالكتروني',padding:true) )
                 
             ],),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -116,11 +116,11 @@ class _MyStartUpState extends State<StartUp> {
               CustomContainer(
                 
                 img: Image.asset('assets/images/bank_Icon.png',color:Colors.white,width: 4.wp,), 
-                Txt:CustomeText(text:  'فتح حساب مصرفي') 
+                Txt:CustomeText(text:  'فتح حساب مصرفي',padding:true) 
                 ),
                 CustomContainer(
                 img: Image.asset('assets/images/location_Icon.png',color:Colors.white,width: 4.wp,), 
-                Txt: CustomeText(text:  'الفروغ') 
+                Txt: CustomeText(text:  'الفروغ',padding:true) 
                 )
             ],)                       
             ],),

@@ -12,6 +12,7 @@ class Customtextfeild extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final TextDirection? textDirection;
   final String? Function(String?)? validator;
+  final String? hintText;
  
 
 
@@ -25,12 +26,13 @@ class Customtextfeild extends StatelessWidget {
     this.prefixIcon,
     this.textDirection,
     this.validator,    
+    this.hintText
  
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextFormField(      
       controller: controller,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
@@ -40,6 +42,8 @@ class Customtextfeild extends StatelessWidget {
       style: Theme.of(context).textTheme.titleSmall ,      
       textDirection: textDirection,
       decoration: InputDecoration( 
+      hintText:hintText ,
+      hintStyle: TextStyle(color: Colors.grey, fontSize: 2.sp),
       errorStyle: TextStyle(
         color: Theme.of(context).colorScheme.error,
         fontSize: 5.sp,
