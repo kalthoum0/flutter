@@ -45,8 +45,7 @@ class CustomHomeContainer extends StatelessWidget {
             children: [
               icon,
               CustomeText(text: label,
-              themeStyle: theme.textTheme.titleMedium,
-              color:Colors.black,            
+              themeStyle: theme.textTheme.titleMedium,                      
                ),
               Expanded(
                 child: Container( 

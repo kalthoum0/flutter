@@ -6,17 +6,20 @@ class TransferContainer extends StatelessWidget {
   final Widget icon;
   final String label;
   final String? description;
+  final VoidCallback? ontap;
+
   const TransferContainer({
     super.key,
     required this.icon,
     required this.label,
-    this.description});
+    this.description,
+    this.ontap});
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return InkWell(      
-      onTap: (){},
+      onTap:ontap??(){},
       child: Padding(
         padding:  EdgeInsets.all(0.2.wp),
         child: Container(
@@ -38,8 +41,7 @@ class TransferContainer extends StatelessWidget {
               icon,
               CustomeText(
                 text: label,
-                themeStyle: theme.textTheme.titleMedium,
-                color: Colors.black,
+                themeStyle: theme.textTheme.titleMedium,                
                 size: 4.sp,),
               if(description != null)
               CustomeText(

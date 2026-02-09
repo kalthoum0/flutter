@@ -1,6 +1,7 @@
-import 'dart:ui_web';
+// import 'dart:ui_web';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/core/extensions/context_extension.dart';
 import 'package:screentasia/screentasia.dart';
 
 
@@ -11,6 +12,8 @@ class CustomeText extends StatelessWidget {
   final double? size;
   final bool? padding;
   final TextStyle? themeStyle;
+  final TextDirection? textDirection;
+  final TextDecoration? textDecoration;
   
   const CustomeText({
     super.key,
@@ -18,24 +21,29 @@ class CustomeText extends StatelessWidget {
     this.color,
     this.size,
     this.padding,
-    this.themeStyle
+    this.themeStyle,
+    this.textDirection,
+    this.textDecoration
    });   
   @override
   Widget build(BuildContext context) {
 
     ThemeData theme = Theme.of(context);
-    Widget content = Text(
+    Widget content = Text(         
           text,
+          textDirection: textDirection,
           style: (themeStyle?? theme.textTheme.bodySmall)?.copyWith(
           fontSize:
-          size?? 3.sp,
-          
-          // 11.sp.ap(adaptivePercentage:
-          //         const AdaptivePercentage(
-          //           tablet:80,
-          //          desktop:60,
-          // )),          
-          color:color?? Colors.white,            
+          size?? 
+          // 3.sp,        
+          (context.isMobile?
+          11.sp.ap(adaptivePercentage:
+                  const AdaptivePercentage(
+                    tablet:80,
+                   desktop:60,
+          )):12),     
+          decoration: textDecoration,    
+          color:color          
           ));
          
       if(padding==true){

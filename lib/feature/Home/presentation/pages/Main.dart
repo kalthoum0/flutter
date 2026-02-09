@@ -92,7 +92,7 @@ final List<Widget> _pages = [
               currentIndex: value,
               selectedFontSize: 4.sp,
               unselectedFontSize: 3.sp,
-              selectedItemColor: theme.primaryColor,
+              selectedItemColor: theme.colorScheme.primary,
             
               onTap: (index){
                 _selectedIndex.value = index;

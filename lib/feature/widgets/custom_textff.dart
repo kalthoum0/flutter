@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_2/core/extensions/context_extension.dart';
 import 'package:screentasia/screentasia.dart';
 
 class Customtextfeild extends StatelessWidget {  
@@ -13,6 +14,7 @@ class Customtextfeild extends StatelessWidget {
   final TextDirection? textDirection;
   final String? Function(String?)? validator;
   final String? hintText;
+
  
 
 
@@ -43,10 +45,23 @@ class Customtextfeild extends StatelessWidget {
       textDirection: textDirection,
       decoration: InputDecoration( 
       hintText:hintText ,
-      hintStyle: TextStyle(color: Colors.grey, fontSize: 2.sp),
+      hintStyle: TextStyle(
+        color: Colors.grey, 
+        fontSize:(context.isMobile?
+          11.sp.ap(adaptivePercentage:
+                  const AdaptivePercentage(
+                    tablet:80,
+                   desktop:60,
+          )):12),),
       errorStyle: TextStyle(
         color: Theme.of(context).colorScheme.error,
-        fontSize: 5.sp,
+        fontSize:context.isMobile?
+          11.sp.ap(adaptivePercentage:
+                  const AdaptivePercentage(
+                    tablet:80,
+                   desktop:60,
+          )):12,
+
         height: 1.2, ),         
         prefixIcon: prefixIcon,          
         fillColor:Color.fromARGB(255, 245, 244, 244),

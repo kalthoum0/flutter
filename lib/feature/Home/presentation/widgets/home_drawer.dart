@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/feature/Home/presentation/pages/settings_page.dart';
 import 'package:screentasia/screentasia.dart';
 
 import '../../../widgets/custome_samll_text.dart' show CustomeText;
@@ -16,7 +17,11 @@ class HomeDrawer extends StatelessWidget {
       MenuItem(icon: Icons.account_balance, label: "فتح حساب مصرفي", onTap: (){} ),
       MenuItem(icon: Icons.credit_card, label: "أرشيف الكروت", onTap: (){} ),
       MenuItem(icon: Icons.person_add_alt_1_outlined, label: "الأصدقاء", onTap: (){} ),
-      MenuItem(icon: Icons.settings_outlined , label: "الاعدادات", onTap: (){} ),
+      MenuItem(icon: Icons.settings_outlined , label: "الاعدادات", onTap: (){
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context)=> SettingsPage())
+        );
+      } ),
       MenuItem(icon: Icons.question_mark_outlined, label: "الأسئلة الشائعة", onTap: (){} ),
       MenuItem(icon: Icons.support_agent, label: "لدعم الفني", onTap: (){} ),
       MenuItem(icon: Icons.info_outline, label: "الفروع", onTap: (){} ),
@@ -57,7 +62,8 @@ class HomeDrawer extends StatelessWidget {
                     ),
                     title: CustomeText(
                       text: item.label,   
-                      size: 4.sp          
+                      size: 4.sp  ,      
+                      color: theme.colorScheme.tertiary,  
                     ),
                     visualDensity: VisualDensity(vertical:-4),
                     onTap: item.onTap,),

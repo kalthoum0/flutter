@@ -32,8 +32,7 @@ class HomeDevider extends StatelessWidget {
                     Padding(
                       padding:  EdgeInsets.only(left: 0.2.wp, right: 0.2.wp),
                       child: CustomeText(                    
-                        text: text,
-                        color: Colors.black,
+                        text: text,                        
                         themeStyle: theme.textTheme.titleMedium,
                       ),
                     ),
