@@ -15,9 +15,11 @@ void main() {
       builder: (context,child){      
       return DevicePreview(      
         enabled: !kReleaseMode, /**enable ONLY in debug/dev**/
-        builder: (context) => BlocProvider(
-          create:(context) => ThemeBloc(),
-          child: MyApp()),               
+        builder: (context) => 
+        // BlocProvider(
+        //   create:(context) => ThemeBloc(),
+        //   child: 
+          MyApp(),               
       );        
     })    
   );

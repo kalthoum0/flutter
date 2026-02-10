@@ -5,12 +5,15 @@ import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screentasia/screentasia.dart';
 
+import '../../bloc/theme_bloc.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    
     return Center(
       child: SizedBox(
         width: context.isMobile? 100.wp: 75.wp,
@@ -36,15 +39,19 @@ class SettingsPage extends StatelessWidget {
                 title: CustomeText(
                   text: 'System Theme',
                   themeStyle: theme.textTheme.titleMedium,) ,
-                trailing: BlocBuilder<ThemeBloc,ThemeMode>(
-                  builder: (context, themeMode) => 
-                  Switch(
-                    value: themeMode == ThemeMode.light, 
+                trailing: 
+                BlocBuilder<ThemeBloc,ThemeState>(                  
+                  builder: (context, state){
+                    bool isLight = state is ThemeLight;
+                    return Switch(
+                    value: isLight,                     
                     onChanged: (isLight){
-                      context.read<ThemeBloc>().add(ToggleTheme());
-                    }),
-                ),
-              ),
+                      context.read<ThemeBloc>().add( ThemeToggle(themeMode: isLight ? ThemeMode.light : ThemeMode.dark));
+                    }
+                    );
+                  }                 
+                ),),
+              
               Divider(
                 thickness: 0.1.wp,
                 color: theme.colorScheme.outline

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/feature/Home/presentation/pages/faq.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/settings_page.dart';
 import 'package:screentasia/screentasia.dart';
 
@@ -22,7 +23,12 @@ class HomeDrawer extends StatelessWidget {
           MaterialPageRoute(builder: (context)=> SettingsPage())
         );
       } ),
-      MenuItem(icon: Icons.question_mark_outlined, label: "الأسئلة الشائعة", onTap: (){} ),
+      MenuItem(icon: Icons.question_mark_outlined, label: "الأسئلة الشائعة", 
+      onTap: (){
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context)=> FAQpage())
+        );
+      } ),
       MenuItem(icon: Icons.support_agent, label: "لدعم الفني", onTap: (){} ),
       MenuItem(icon: Icons.info_outline, label: "الفروع", onTap: (){} ),
       MenuItem(icon: Icons.logout, label: "تسجيل الخروج", onTap: (){} )
