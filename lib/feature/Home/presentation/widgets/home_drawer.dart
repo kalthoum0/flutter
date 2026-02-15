@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/core/router/router.dart';
+import 'package:flutter_application_2/core/router/router.gr.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/faq.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/settings_page.dart';
 import 'package:screentasia/screentasia.dart';
@@ -19,15 +22,11 @@ class HomeDrawer extends StatelessWidget {
       MenuItem(icon: Icons.credit_card, label: "أرشيف الكروت", onTap: (){} ),
       MenuItem(icon: Icons.person_add_alt_1_outlined, label: "الأصدقاء", onTap: (){} ),
       MenuItem(icon: Icons.settings_outlined , label: "الاعدادات", onTap: (){
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context)=> SettingsPage())
-        );
+        context.pushRoute(SettingsPageRoute());
       } ),
       MenuItem(icon: Icons.question_mark_outlined, label: "الأسئلة الشائعة", 
       onTap: (){
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context)=> FAQpage())
-        );
+        context.pushRoute(FaqPageRoute());
       } ),
       MenuItem(icon: Icons.support_agent, label: "لدعم الفني", onTap: (){} ),
       MenuItem(icon: Icons.info_outline, label: "الفروع", onTap: (){} ),

@@ -1,10 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
+import 'package:flutter_application_2/core/router/router.dart';
+import 'package:flutter_application_2/core/router/router.gr.dart';
 import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:screentasia/screentasia.dart';
 
-class FAQpage extends StatelessWidget {
-  const FAQpage({super.key});
+@RoutePage()
+
+class FaqPage extends StatelessWidget {
+  const FaqPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +23,8 @@ class FAQpage extends StatelessWidget {
             appBar: AppBar(
               leading: IconButton(
                 onPressed: (){
-                  Navigator.of(context).pop(
-                  MaterialPageRoute(builder: (context)=> FAQpage())
-                );},
+                  context.back();
+                },
                 icon: Icon(Icons.arrow_back_ios),
                 color: theme.colorScheme.primary,),
           

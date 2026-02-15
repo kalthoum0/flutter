@@ -5,6 +5,9 @@ import 'package:flutter_application_2/feature/widgets/custom_textff.dart';
 import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:screentasia/screentasia.dart';
+import 'package:auto_route/auto_route.dart';
+
+@RoutePage()
 
 class SmartPayPage extends StatefulWidget {
   const SmartPayPage({super.key});

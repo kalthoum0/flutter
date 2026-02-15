@@ -1,20 +1,25 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
+import 'package:flutter_application_2/core/router/router.dart';
+import 'package:flutter_application_2/core/router/router.gr.dart';
 import 'package:flutter_application_2/feature/startUp/presentation/widgets/custom_container.dart';
 import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:screentasia/screentasia.dart';
 
 import '../../../login/presentation/page/login_page.dart';
 
-class StartUp extends StatefulWidget {
-  const StartUp({super.key});
+@RoutePage()
+
+class StartUpPage extends StatefulWidget {
+  const StartUpPage({super.key});
 
   @override
-  State<StartUp> createState() => _MyStartUpState();
+  State<StartUpPage> createState() => _MyStartUpPageState();
 }
 
-class _MyStartUpState extends State<StartUp> {
+class _MyStartUpPageState extends State<StartUpPage> {
   @override
   Widget build(BuildContext context) {
    
@@ -87,9 +92,7 @@ class _MyStartUpState extends State<StartUp> {
                   Expanded(
                     child: InkWell(
                       onTap:  (){
-                        Navigator.of(context).push(
-                         MaterialPageRoute(builder: (context)=> LoginPage())
-                        );
+                        context.pushRoute(LoginPageRoute());
                       },                 
                       child: CustomContainer(
                         img: Image.asset('assets/images/midwhats.png',color:Colors.white,width: 4.wp,), 
@@ -166,7 +169,7 @@ class _MyStartUpState extends State<StartUp> {
   }
 }
 
-// class StartUp extends StatelessWidget {
+// class StartUpPage extends StatelessWidget {
 //   const StartUp({super.key});
 
 //   @override

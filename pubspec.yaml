@@ -45,7 +45,7 @@ dependencies:
   country_flags: ^4.1.2
   qr_flutter: ^4.1.0
   flutter_bloc: ^9.1.1
-  auto_route: ^11.1.0
+  auto_route: ^8.1.0
   
   
 
@@ -59,7 +59,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
-  auto_route_generator: ^10.4.0
+  auto_route_generator: ^8.0.0
+  build_runner: ^2.4.13
+  flutter_launcher_icons: "^0.14.4"
+
   
 
 # For information on the generic Dart part of this file, see the
@@ -105,7 +108,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 
-flutter_native_splash:            # <- must be here, root level
+flutter_native_splash: # <- must be here, root level
   android: true
   ios: true
   web: true

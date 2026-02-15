@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
-import 'package:flutter_application_2/feature/Home/presentation/bloc/theme_bloc.dart';
+import 'package:flutter_application_2/core/router/router.dart';
 import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screentasia/screentasia.dart';
-
 import '../../bloc/theme_bloc.dart';
+import 'package:auto_route/auto_route.dart';
+
+@RoutePage()
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -21,10 +23,8 @@ class SettingsPage extends StatelessWidget {
           appBar: AppBar(
             leading: IconButton(
               onPressed: (){
-                 Navigator.of(context).pop(
-                  MaterialPageRoute(builder: (context)=> SettingsPage())
-                );
-              }, 
+                context.back();
+              },
               icon: Icon(
                 Icons.arrow_back_ios),
                 color: theme.colorScheme.primary,),

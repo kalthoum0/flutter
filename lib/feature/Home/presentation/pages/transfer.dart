@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
-import 'package:flutter_application_2/feature/Home/presentation/pages/transfer_between_bank.dart';
+import 'package:flutter_application_2/core/router/router.dart';
+import 'package:flutter_application_2/core/router/router.gr.dart';
+import 'package:flutter_application_2/feature/Home/presentation/pages/bank_transfer.dart';
 import 'package:flutter_application_2/feature/Home/presentation/widgets/transfer_Container.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:screentasia/screentasia.dart';
+import 'package:auto_route/auto_route.dart';
+
+@RoutePage()
 
 class TransferPage extends StatefulWidget {
   const TransferPage({super.key});
@@ -47,8 +52,7 @@ class _TransferPageState extends State<TransferPage> {
                           icon: SvgPicture.asset('assets/svg/onePay.svg', width: 9.wp, height: 9.hp,), 
                           label: 'التحويل بين المصارف',
                           ontap:(){
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context)=> TransferBetweenBank()));                              
+                            context.pushRoute(BankTransferPageRoute());                        
                           } )
                       ),
                       Expanded(

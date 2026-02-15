@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/feature/Home/presentation/bloc/theme_bloc.dart';
+import 'package:flutter_application_2/core/router/router.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/smart_pay.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,8 +8,10 @@ import 'package:screentasia/screentasia.dart';
 import 'feature/Home/bloc/theme_bloc.dart';
 import 'feature/startUp/presentation/page/start_up.dart';
 
+ final appRouter = AppRouter();
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   const MyApp({super.key});
+  
 
   // This widget is the root of your application.
   @override
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
       create: (context) => ThemeBloc(),
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
-          return MaterialApp(
+          return MaterialApp.router(
+            routerConfig: appRouter.config(),
             themeMode: state is ThemeLight ? ThemeMode.light : ThemeMode.dark,
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
@@ -193,8 +196,10 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                   ),
+                
             ),
-            home: const StartUp(),
+            
+            
           );
         },
       ),

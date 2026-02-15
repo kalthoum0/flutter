@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:screentasia/screentasia.dart';
-
-import '../../../../core/extensions/context_extension.dart';
+// import '../../../../core/extensions/context_extension.dart';
 import '../../../widgets/custome_samll_text.dart';
+import 'package:auto_route/auto_route.dart';
 
-class TransferBetweenBank extends StatelessWidget {
-  const TransferBetweenBank({super.key});
+@RoutePage()
+
+class BankTransferPage extends StatelessWidget {
+  const BankTransferPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+              onPressed: (){
+                context.back();
+              },
+              icon: Icon(
+                Icons.arrow_back_ios),
+                color: theme.colorScheme.primary,)
+        ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(

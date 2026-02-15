@@ -1,12 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
-import 'package:flutter_application_2/feature/Home/presentation/pages/Main.dart';
+import 'package:flutter_application_2/core/router/router.dart';
+import 'package:flutter_application_2/core/router/router.gr.dart';
+import 'package:flutter_application_2/feature/Home/presentation/pages/main.dart';
 import 'package:screentasia/screentasia.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_textff.dart';
-import '../../../startUp/presentation/page/start_up.dart';
+// import '../../../startUp/presentation/page/start_up.dart';
 // import 'custom_button.dart';
+
+@RoutePage()
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -243,15 +248,16 @@ class _MyLoginState extends State<LoginPage> {
                             //this .validate will trigger each validater in a textformfield                   
                             onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (_)=>const MainPage())
-                                      );                              
+                                  // Navigator.of(context).push(
+                                  //       MaterialPageRoute(builder: (_)=>const MainPage())
+                                  //     );                              
                                   // Input is valid
                                   // ScaffoldMessenger.of(context)
                                   // ..hideCurrentSnackBar()
                                   // ..showSnackBar(
                                   //   SnackBar(content: Text('Login successful!'))
                                   //   );
+                                  context.pushRoute(MainPageRoute());
                                     
                                 }                            
                             },                    
