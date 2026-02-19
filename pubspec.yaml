@@ -46,6 +46,7 @@ dependencies:
   qr_flutter: ^4.1.0
   flutter_bloc: ^9.1.1
   auto_route: ^8.1.0
+  flutter_credit_card: ^4.1.0
   
   
 

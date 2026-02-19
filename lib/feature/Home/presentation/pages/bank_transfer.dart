@@ -13,6 +13,7 @@ class BankTransferPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -69,6 +70,7 @@ class BankTransferPage extends StatelessWidget {
                   ),
                 ),              
               ),
+            
               SizedBox(height: 1.hp,),
               Row(children: [
                 Expanded(

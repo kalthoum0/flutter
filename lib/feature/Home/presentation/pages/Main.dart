@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_application_2/core/extensions/context_extension.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/home.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/smart_pay.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/transfer.dart';
+import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:screentasia/screentasia.dart';
 import '../widgets/home_drawer.dart';
 
@@ -65,10 +67,10 @@ final List<Widget> _pages = [
               ),
               IconButton(
                 onPressed: (){},
-                icon: Icon(Icons.help_outline),
+                icon: Icon(Icons.help_outline),                
                 color: Theme.of(context).colorScheme.primary,
                 iconSize: 4.hp
-              ),  
+              ),                                                 
           ],
                           
           title:  Image.asset('assets/images/logo.png',

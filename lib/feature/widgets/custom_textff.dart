@@ -5,7 +5,7 @@ import 'package:screentasia/screentasia.dart';
 
 class Customtextfeild extends StatelessWidget {  
 
-  final TextEditingController  controller;
+  final TextEditingController?  controller;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final bool obscureText;
@@ -14,13 +14,15 @@ class Customtextfeild extends StatelessWidget {
   final TextDirection? textDirection;
   final String? Function(String?)? validator;
   final String? hintText;
+  final Color? color;
+  final double? height;
 
  
 
 
   const Customtextfeild({
     super.key,
-    required this.controller,
+    this.controller,
     required this.keyboardType,
     required this.textInputAction,
     this.obscureText = false,
@@ -28,7 +30,9 @@ class Customtextfeild extends StatelessWidget {
     this.prefixIcon,
     this.textDirection,
     this.validator,    
-    this.hintText
+    this.hintText,
+    this.color,
+    this.height,
  
   });
 
@@ -62,9 +66,9 @@ class Customtextfeild extends StatelessWidget {
                    desktop:60,
           )):12,
 
-        height: 1.2, ),         
+        height: height?? 1.2, ),         
         prefixIcon: prefixIcon,          
-        fillColor:Color.fromARGB(255, 245, 244, 244),
+        fillColor:color?? Color.fromARGB(255, 245, 244, 244),
         filled: true,        
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
