@@ -40,6 +40,8 @@ class AppRouter extends $AppRouter  {
 
     AutoRoute(page: CardPageRoute.page, initial: true),
 
+    AutoRoute(page: CardStatementRoute.page,),
+
   
   ];
 }

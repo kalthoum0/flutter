@@ -23,11 +23,19 @@ class CardContainer extends StatelessWidget {
 
     
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-       
+      padding:  EdgeInsets.all(0.2.wp),
+      child: Container(       
         padding: EdgeInsets.all(1.wp),
         decoration: BoxDecoration(
+          boxShadow: [
+              BoxShadow(
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 12,
+              spreadRadius: 0,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          color: theme.colorScheme.background,            
           borderRadius: BorderRadius.circular(1.wp),
           border: Border.all(
             color: theme.colorScheme.outline,
@@ -52,7 +60,7 @@ class CardContainer extends StatelessWidget {
               CustomeText(
                 text: data,
                 themeStyle: theme.textTheme.titleLarge,
-               size: 16,
+                size: 16,
                 color: color,)
             ],),                
           ),

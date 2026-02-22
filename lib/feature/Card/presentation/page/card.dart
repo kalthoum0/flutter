@@ -1,12 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
+import 'package:flutter_application_2/core/router/router.gr.dart';
 import 'package:flutter_application_2/feature/Card/data/Mapper/card_settings_class.dart';
 import 'package:flutter_application_2/feature/Card/presentation/bloc/freeze_card_bloc.dart';
 import 'package:flutter_application_2/feature/Card/presentation/bloc/settings_sheet_bloc.dart';
 import 'package:flutter_application_2/feature/Card/presentation/widgets/credit_card.dart';
 import 'package:flutter_application_2/feature/Card/presentation/widgets/details_containers.dart';
 import 'package:flutter_application_2/feature/Card/presentation/widgets/settings_container.dart';
+import 'package:flutter_application_2/feature/widgets/custom_textff.dart';
 import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -132,17 +134,93 @@ class _CardPageState extends State<CardPage> {
                 height: 15.hp,
               ),
               centerTitle: true,
+
+              
             ),
 
             body: SingleChildScrollView(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:  EdgeInsets.all(1.wp),
                   child: SizedBox(
                     width: 65.wp,
-                    child: Column(
+                    child: Column(                      
                       children: [
-                        CreditCard(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            CustomeText(text: 'Chose your account',
+                            themeStyle: theme.textTheme.titleMedium,
+                            color: theme.textTheme.titleSmall!.color!.withOpacity(0.5),
+                            size: 14),
+                          ],
+                        ),
+                        SizedBox(height: 1.hp,),
+                        DropdownMenu(
+                          menuStyle: MenuStyle(
+                            minimumSize: MaterialStateProperty.all(const Size(250, 40)),
+                             maximumSize: MaterialStateProperty.all(const Size(250, double.infinity)), // 250 is width
+                           
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16), // Adjust radius as needed
+                                ),
+                              ),
+                          ),
+                          width: double.infinity,
+                          textStyle: TextStyle(
+                            fontWeight: theme.textTheme.titleMedium!.fontWeight,
+                            fontSize: theme.textTheme.titleSmall!.fontSize,
+                            color: theme.textTheme.titleSmall!.color!.withOpacity(0.5),                            
+                          ),
+                          trailingIcon: Icon(
+                              Icons.arrow_drop_down, 
+                              color: theme.textTheme.bodyMedium!.color!.withOpacity(0.4) // Set your custom color here
+                          ),
+                          selectedTrailingIcon:  Icon(
+                            Icons.arrow_drop_up,
+                            color: theme.colorScheme.primary,
+                          ),
+                          inputDecorationTheme: InputDecorationTheme(                            
+                            filled: true,
+                            fillColor: theme.colorScheme.shadow.withOpacity(0.15),
+                            border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none, // 🔥 no border color
+                          ),
+                          ),
+                          enableFilter: true,
+                          dropdownMenuEntries: <DropdownMenuEntry<String>>[
+                            
+                            DropdownMenuEntry(
+                              value: 'Medit 01', 
+                              label: 'Medit 01', 
+                              style: ButtonStyle(
+                                textStyle: MaterialStateProperty.all(
+                                TextStyle(                                                                    
+                                  fontSize: 12,
+                                ),
+                            ))),
+                            DropdownMenuEntry(value: 'Medit 02', label: 'Medit 02',
+                            style: ButtonStyle(
+                                textStyle: MaterialStateProperty.all(
+                                TextStyle(                                                                    
+                                  fontSize: 12,
+                                ),
+                            ))),
+                            DropdownMenuEntry(value: 'Medit 03', label: 'Medit 03',
+                            style: ButtonStyle(
+                                textStyle: MaterialStateProperty.all(
+                                TextStyle(                                                                    
+                                  fontSize: 12,
+                                ),
+                            ))),                           
+                        ]),
+
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: 1.wp),
+                          child: CreditCard(),
+                        ),
                         CardContainer(
                           label: 'Balance',
                           data: '45,678.90\$',
@@ -187,42 +265,9 @@ class _CardPageState extends State<CardPage> {
                               ),
                             ),
                           ],
-                        ),
-
-                        SizedBox(height: 2.hp),
-
-                        // InkWell(
-                        //   onTap: () {},
-                        //   child: Container(
-                        //     decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(1.wp),
-                        //       border: Border.all(
-                        //         color: theme.colorScheme.outline,
-                        //         width: 0.1.wp,
-                        //       ),
-                        //     ),
-                        //     child: Row(
-                        //       mainAxisAlignment: MainAxisAlignment.center,
-                        //       children: [
-                        //         Column(
-                        //           children: [
-                        //             SvgPicture.asset(
-                        //               'assets/svg/financeBook.svg',
-                        //               width: 9.wp,
-                        //               height: 9.hp,
-                        //             ),
-                        //             CustomeText(
-                        //               text: 'View card statement',
-                        //               themeStyle: theme.textTheme.titleMedium,
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-
-                        SizedBox(height: 2.hp),
+                        ),                                                  
+                         
+                        SizedBox(height: 3.hp),
                         BlocListener<SettingsSheetBloc, SettingsSheetState>(
                           listener: (context, state) {
                             if (state is ShowSettingsDialog) {
@@ -248,10 +293,20 @@ class _CardPageState extends State<CardPage> {
                                 children: [
                                   Expanded(
                                     child: Center(
-                                      child: CustomeText(
-                                        text: 'Card settings',
-                                        themeStyle: theme.textTheme.titleMedium,
-                                        color: Colors.white,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.settings,
+                                          color: theme.colorScheme.background,),
+                                          SizedBox(width: 0.5.wp,),    
+                                          CustomeText(
+                                            text: 'Card settings',
+                                            themeStyle: theme.textTheme.titleMedium,
+                                            size: theme.textTheme.titleSmall!.fontSize,
+                                            color: Colors.white,
+                                            //size: 14,
+                                          ),                                                                                
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -259,8 +314,136 @@ class _CardPageState extends State<CardPage> {
                               ),
                             ),
                           ),
-                       
+                        
                         ),
+                        SizedBox(height: 1.hp),
+                        Container(
+                          decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(1.wp),
+                                    border: Border.all(
+                                      color: theme.colorScheme.primary,
+                                      width: 0.1.wp,
+                                    ),
+                                  ),
+                          child: ListTile(
+                            leading: Icon(Icons.description,
+                            color: theme.colorScheme.primary,
+                            size: 2.5.wp,),
+                             
+                            title: CustomeText(
+                              text: 'View Card Statement',
+                              color: theme.colorScheme.primary,
+                              themeStyle: theme.textTheme.titleMedium,
+                              size:theme.textTheme.titleSmall!.fontSize, 
+                              //size: 12
+                            ),
+
+                            trailing: IconButton(
+                            icon: Icon(Icons.arrow_forward_ios,),
+                            onPressed: (){context.pushRoute(CardStatementRoute());},
+                            color: theme.colorScheme.primary),
+                            
+                          ),
+                        ),
+                        SizedBox(height: 3.hp,)
+
+                        //  Row(                   
+                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,       
+                        //    children: [
+                        //      Expanded(
+                        //        child: InkWell(
+                        //         onTap: () {
+                        //           context.pushRoute(CardStatementRoute());
+                        //         },
+                        //         child: Container(
+                        //           decoration: BoxDecoration(
+                        //             color: theme.colorScheme.background,
+                        //             borderRadius: BorderRadius.circular(1.wp),
+                        //             border: Border.all(
+                        //               color: theme.colorScheme.primary,
+                        //               width: 0.1.wp,
+                        //             ),
+                        //           ),
+                        //           child: Row(
+                        //             mainAxisAlignment: MainAxisAlignment.center,
+                        //             children: [
+                        //               Padding(
+                        //                 padding: const EdgeInsets.all(8.0),
+                        //                 child: Column(
+                        //                   children: [
+                        //                     // SvgPicture.asset(
+                        //                     //   'assets/svg/financeBook.svg',
+                        //                     //   width: 7.wp,
+                        //                     //   height: 7.hp,
+                        //                     // ),
+                        //                     Icon(Icons.description,
+                        //                     size: 2.wp,
+                        //                     color: theme.colorScheme.primary,),
+                        //                     CustomeText(
+                        //                       text: 'View card statement',
+                        //                       themeStyle: theme.textTheme.titleMedium,
+                        //                       color: theme.colorScheme.primary,
+                        //                       size:theme.textTheme.titleSmall!.fontSize, 
+                        //                       //size: 12
+                        //                     ),
+                        //                   ],
+                        //                 ),
+                        //               ),
+                        //             ],
+                        //           ),
+                        //         ),
+                        //       ),
+                        //      ),
+                        //      SizedBox(width: 1.wp),
+                        //      Expanded(
+                        //        child: InkWell(
+                        //         onTap: () {
+                        //           context.pushRoute(CardStatementRoute());
+                        //         },
+                        //         child: Container(
+                        //           decoration: BoxDecoration(
+                        //             borderRadius: BorderRadius.circular(1.wp),
+                        //             border: Border.all(
+                        //               color: theme.colorScheme.primary,
+                        //               width: 0.1.wp,
+                        //             ),
+                        //           ),
+                        //           child: Row(
+                        //             mainAxisAlignment: MainAxisAlignment.center,
+                        //             children: [
+                        //               Padding(
+                        //                 padding: const EdgeInsets.all(8.0),
+                        //                 child: Column(
+                        //                   children: [
+                        //                     // SvgPicture.asset(
+                        //                     //   'assets/svg/financeBook.svg',
+                        //                     //   width: 7.wp,
+                        //                     //   height: 7.hp,
+                        //                     // ),
+                        //                     Icon(Icons.settings
+                        //                     ,size: 2.wp,
+                        //                     color: theme.colorScheme.primary,),
+                        //                     CustomeText(
+                        //                       text: 'Card settings',
+                        //                       color: theme.colorScheme.primary,
+                        //                       themeStyle: theme.textTheme.titleMedium,
+                        //                       size:theme.textTheme.titleSmall!.fontSize, 
+                        //                       //size: 12
+                        //                     ),
+                        //                   ],
+                        //                 ),
+                        //               ),
+                        //             ],
+                        //           ),
+                        //         ),
+                        //                                ),
+                        //      ),
+                        //    ],
+                        //  ),
+
+                       
+                       
+                      
                         // SizedBox(height: 2.hp,),
                         // ListView.builder(
                         //   shrinkWrap: true,

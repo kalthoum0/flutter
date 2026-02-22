@@ -19,3 +19,4 @@ final class ShowCardDialog extends FreezeCardBlocState{
 
 
 final class ConfirmFreeze extends FreezeCardBlocState{}
+

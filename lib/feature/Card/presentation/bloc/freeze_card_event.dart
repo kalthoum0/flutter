@@ -9,3 +9,7 @@ final class OpenFreezeDialog extends FreezeCardBlocEvent{
   
   OpenFreezeDialog({required this.type});
 }
+
+final class  AcceptFreeze extends FreezeCardBlocEvent{
+  
+}

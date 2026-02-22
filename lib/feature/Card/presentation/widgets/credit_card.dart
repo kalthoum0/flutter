@@ -21,8 +21,8 @@ class CreditCard extends StatelessWidget {
     borderRadius: BorderRadius.circular(20),
       ),
       child: CreditCardWidget(
-        width: 25.wp,
-        height: 20.hp,
+        width: double.infinity,
+        height: 26.hp,
         cardBgColor:theme.colorScheme.primary ,
         cardNumber: cardNumber,
         expiryDate: expiryDate,

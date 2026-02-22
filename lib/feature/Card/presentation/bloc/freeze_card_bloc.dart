@@ -13,5 +13,9 @@ class FreezeCardBlocBloc extends Bloc<FreezeCardBlocEvent, FreezeCardBlocState> 
       emit(FreezeCardBlocInitial());
 
     });
+
+    on<AcceptFreeze>((event, emit){
+      emit(ConfirmFreeze());
+    });
   }
 }

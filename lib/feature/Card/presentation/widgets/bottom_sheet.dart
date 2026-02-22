@@ -33,11 +33,7 @@ class BottomSheets extends StatelessWidget {
         context.read<FreezeCardBlocBloc>().add(OpenFreezeDialog(type: CardDialogType.resetPin));
       }),
       CardSettings(icon: Icons.password, label: 'Card Number', onTap: () {}),
-      CardSettings(
-        icon: Icons.description,
-        label: 'View card statement',
-        onTap: () {},
-      ),
+      
     ];
 
     return BlocListener<FreezeCardBlocBloc, FreezeCardBlocState>(
@@ -79,7 +75,7 @@ class BottomSheets extends StatelessWidget {
       child: Container(
         width: 75.wp,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(1.wp),
+          borderRadius: BorderRadius.circular(1.5.wp),
           color: Theme.of(context).colorScheme.background,
         ),
         child: Column(
@@ -90,6 +86,7 @@ class BottomSheets extends StatelessWidget {
               child: Center(
                 child: CustomeText(
                   text: 'Card Settings',
+                  size: 16,
                   themeStyle: theme.textTheme.titleMedium,
                 ),
               ),
@@ -114,19 +111,12 @@ class BottomSheets extends StatelessWidget {
                           title: CustomeText(
                             text: item.label,
                             themeStyle: theme.textTheme.bodyMedium,
+                            size: 14,
                           ),
                         ),
                       ),
 
-                      if(item.label =='Card Number')...[
-                        Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 1.wp),
-                          child: Divider(
-                            thickness: 0.1.wp,
-                            color: theme.colorScheme.outline,
-                          ),
-                        )
-                      ]
+                      
                     ],
                   );
                 },

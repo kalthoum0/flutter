@@ -30,6 +30,7 @@ class CustomeText extends StatelessWidget {
 
     ThemeData theme = Theme.of(context);
     Widget content = Text(         
+         //overflow: TextOverflow.ellipsis,
           text,
           textDirection: textDirection,
           style: (themeStyle?? theme.textTheme.bodySmall)?.copyWith(

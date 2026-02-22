@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/router/router.dart';
+import 'package:flutter_application_2/feature/Card/presentation/bloc/filter_button_bloc.dart';
 import 'package:flutter_application_2/feature/Card/presentation/bloc/settings_sheet_bloc.dart';
 import 'package:flutter_application_2/feature/Home/presentation/pages/smart_pay.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ThemeBloc()),
         BlocProvider(create: (context) => SettingsSheetBloc()),
-         BlocProvider(create: (context) => FreezeCardBlocBloc())
+        BlocProvider(create: (context) => FreezeCardBlocBloc()),
+        BlocProvider(create: (context) => FilterButtonBloc())
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
@@ -69,7 +71,7 @@ class MyApp extends StatelessWidget {
               textTheme: GoogleFonts.cairoTextTheme().copyWith(
                 titleLarge: TextStyle(
                   fontFamily: GoogleFonts.cairo().fontFamily,
-                  fontSize: 15.sp.ap(
+                  fontSize: 16.sp.ap(
                     adaptivePercentage: const AdaptivePercentage(
                       tablet: 80,
                       desktop: 60,
@@ -80,7 +82,7 @@ class MyApp extends StatelessWidget {
                 ),
                 titleMedium: TextStyle(
                   fontFamily: GoogleFonts.cairo().fontFamily,
-                  fontSize: 15.sp.ap(
+                  fontSize: 14.sp.ap(
                     adaptivePercentage: const AdaptivePercentage(
                       tablet: 80,
                       desktop: 60,
@@ -91,7 +93,7 @@ class MyApp extends StatelessWidget {
                 ),
                 titleSmall: TextStyle(
                   fontFamily: GoogleFonts.cairo().fontFamily,
-                  fontSize: 16,
+                  fontSize: 12,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
