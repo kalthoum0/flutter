@@ -27,15 +27,18 @@ class HomeDevider extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return  Row(
+      //mainAxisSize: MainAxisSize.min,
                   children: [
                     icon,                
                     Padding(
                       padding:  EdgeInsets.only(left: 0.2.wp, right: 0.2.wp),
                       child: CustomeText(                    
-                        text: text,                        
+                        text: text,        
+                        size: 14,                
                         themeStyle: theme.textTheme.titleMedium,
                       ),
                     ),
+                    SizedBox(width: 0.1.wp,),
                   if(useContainer)
                     Container(
                       // height: 3.hp,
@@ -52,7 +55,7 @@ class HomeDevider extends StatelessWidget {
                         children: [
                           CustomeText(
                             text: containerText?? '',                     
-                            size: 2.5.sp,
+                            size: 3.sp,
                             themeStyle: theme.textTheme.titleMedium,
                             color:borderColor,),
 

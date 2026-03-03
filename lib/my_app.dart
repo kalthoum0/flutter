@@ -7,8 +7,9 @@ import 'package:flutter_application_2/feature/Home/presentation/pages/smart_pay.
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:screentasia/screentasia.dart';
+import 'feature/Card/presentation/bloc/date_picker_bloc.dart';
 import 'feature/Card/presentation/bloc/freeze_card_bloc.dart';
-import 'feature/Home/bloc/theme_bloc.dart';
+import 'feature/Home/presentation/bloc/theme_bloc.dart';
 import 'feature/startUp/presentation/page/start_up.dart';
 
 final appRouter = AppRouter();
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ThemeBloc()),
         BlocProvider(create: (context) => SettingsSheetBloc()),
         BlocProvider(create: (context) => FreezeCardBlocBloc()),
-        BlocProvider(create: (context) => FilterButtonBloc())
+        BlocProvider(create: (context) => FilterButtonBloc()),
+        BlocProvider(create: (context) => DatePickerBloc())
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {

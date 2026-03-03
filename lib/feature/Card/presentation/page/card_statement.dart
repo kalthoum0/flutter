@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/core/extensions/context_extension.dart';
+import 'package:flutter_application_2/feature/Card/presentation/bloc/date_picker_bloc.dart';
 import 'package:flutter_application_2/feature/Card/presentation/bloc/filter_button_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screentasia/screentasia.dart';
@@ -9,31 +10,30 @@ import '../../../widgets/custom_textff.dart';
 import '../../../widgets/custome_samll_text.dart';
 
 @RoutePage()
-class CardStatement extends StatelessWidget {
+class CardStatement extends StatefulWidget {
   const CardStatement({super.key});
 
   @override
+  State<CardStatement> createState() => _CardStatementState();
+}
+
+class _CardStatementState extends State<CardStatement> {
+  @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    TextEditingController dateControllerfrom = TextEditingController();
+    TextEditingController dateControllerto = TextEditingController();
+
+    DateTimeRange daterangs = DateTimeRange(
+      start: DateTime(2010,1,1), 
+      end: DateTime(2100,1,1)
+    );
 
     final List<String> filterButtonList = [
       'Registered',
       'Registered',
       'Registered',
     ];
-
-    Future<void> _selectDate(BuildContext context) async {
-      final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2101),
-      );
-      if (picked != null) {
-        // Update your state/BLoC here
-        print(picked.toString());
-      }
-    }
 
     return Center(
       child: SizedBox(
@@ -152,60 +152,113 @@ class CardStatement extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 2.hp),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomeText(
-                            text: 'from:',
-                            themeStyle: theme.textTheme.titleMedium,
-                            color: theme.textTheme.titleSmall!.color!
-                                .withOpacity(0.5),
-                            size: theme.textTheme.titleSmall!.fontSize,
-                          ),
-                          InkWell(
-                            child: Customtextfeild(
+                BlocConsumer<DatePickerBloc, DatePickerState>(
+                  listener: (context, state) {
+                    // TODO: implement listener
+                    if (state.range != null) {
+                      dateControllerfrom.text = state.range!.start.toString().split(" ")[0];
+                      dateControllerto.text = state.range!.end.toString().split(" ")[0];
+                    }
+                  },
+                  builder: (context, state) {
+                    return Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomeText(
+                              text: 'from:',
+                              themeStyle: theme.textTheme.titleMedium,
+                              color: theme.textTheme.titleSmall!.color!
+                                  .withOpacity(0.5),
+                              size: theme.textTheme.titleSmall!.fontSize,
+                            ),
+                             Customtextfeild(
+                              controller: dateControllerfrom,
                               keyboardType: TextInputType.datetime,
                               textInputAction: TextInputAction.done,
-                              color: theme.colorScheme.shadow.withOpacity(0.15),
+                              color: theme.colorScheme.shadow.withOpacity(
+                                0.15,
+                              ),
                               prefixIcon: Icon(
                                 Icons.calendar_month_outlined,
                                 color: theme.colorScheme.primary,
                               ),
-                            ),
-                          ),
-                        ],
+                              ontap: () async {
+                                final DateTimeRange? picked = await showDateRangePicker(
+                                  context: context,
+                                  firstDate: DateTime(2022),
+                                  lastDate: DateTime.now(),
+                                  builder: (context, child) {
+                                    return Theme(
+                                      data: Theme.of(context).copyWith(
+                                        colorScheme: ColorScheme.light(
+                                          primary: theme.colorScheme.primary, // SmartBank Blue
+                                        ),
+                                      ),
+                                      child: child!,
+                                    );
+                                  },
+                                );
+                                if (picked != null) {
+                                  context.read<DatePickerBloc>().add(SelectRange(picked));
+                                }
+                              }
+                            )                          
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 1.wp),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomeText(
-                            text: 'to:',
-                            themeStyle: theme.textTheme.titleMedium,
-                            color: theme.textTheme.titleSmall!.color!
-                                .withOpacity(0.5),
-                            size: theme.textTheme.titleSmall!.fontSize,
-                          ),
-                          InkWell(
-                            child: Customtextfeild(
+                      SizedBox(width: 1.wp),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomeText(
+                              text: 'to:',
+                              themeStyle: theme.textTheme.titleMedium,
+                              color: theme.textTheme.titleSmall!.color!
+                                  .withOpacity(0.5),
+                              size: theme.textTheme.titleSmall!.fontSize,
+                            ),
+                           Customtextfeild(
+                              controller: dateControllerto,
                               keyboardType: TextInputType.datetime,
                               textInputAction: TextInputAction.done,
-                              color: theme.colorScheme.shadow.withOpacity(0.15),
+                              color: theme.colorScheme.shadow.withOpacity(
+                                0.15,
+                              ),
                               prefixIcon: Icon(
                                 Icons.calendar_month_outlined,
                                 color: theme.colorScheme.primary,
                               ),
-                            ),
-                          ),
-                        ],
+                              ontap: () async {
+                                final DateTimeRange? picked = await showDateRangePicker(
+                                  context: context,
+                                  firstDate: DateTime(2022),
+                                  lastDate: DateTime.now(),
+                                  builder: (context, child) {
+                                    return Theme(
+                                      data: Theme.of(context).copyWith(
+                                        colorScheme: ColorScheme.light(
+                                          primary: theme.colorScheme.primary, // SmartBank Blue
+                                        ),
+                                      ),
+                                      child: child!,
+                                    );
+                                  },
+                                );  
+                                if (picked != null) {
+                                  context.read<DatePickerBloc>().add(SelectRange(picked));                                  
+                                }                              
+                              },
+                            )                                                        
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  );
+                  },
                 ),
                 SizedBox(height: 1.hp),
                 InkWell(
@@ -250,131 +303,53 @@ class CardStatement extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 1.hp),
-                
 
-                   
                 Row(
-                children: List.generate(3, (index) {
-                  return BlocBuilder<FilterButtonBloc, FilterButtonState>(
-                    builder: (context, state) {                                            
-                     bool isSelected = state.selectedIndex == index;
-                      final Color bgColor = isSelected
-                          ? theme.colorScheme.primary
-                          : theme.colorScheme.shadow.withOpacity(0.2);
-                      final Color brdr =isSelected
-                          ? theme.colorScheme.primary
-                          : theme.colorScheme.shadow.withOpacity(0.3);
-                      final Color textColor = isSelected
-                          ? theme.colorScheme.background
-                          : theme.colorScheme.primary;
-                      return Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 0.5.wp),
-                        child: InkWell(
-                          onTap: () {
-                            context.read<FilterButtonBloc>().add(
-                              ChangeColor(index),                            
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.wp),
-                              border: Border.all(
-                                color: brdr,
-                                width: 0.1.wp,
+                  children: List.generate(3, (index) {
+                    return BlocBuilder<FilterButtonBloc, FilterButtonState>(
+                      builder: (context, state) {
+                        bool isSelected = state.selectedIndex == index;
+                        final Color bgColor = isSelected
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.shadow.withOpacity(0.2);
+                        final Color brdr = isSelected
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.shadow.withOpacity(0.3);
+                        final Color textColor = isSelected
+                            ? theme.colorScheme.background
+                            : theme.colorScheme.primary;
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 0.5.wp),
+                          child: InkWell(
+                            onTap: () {
+                              context.read<FilterButtonBloc>().add(
+                                ChangeColor(index),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2.wp),
+                                border: Border.all(color: brdr, width: 0.1.wp),
+                                color: bgColor,
                               ),
-                              color: bgColor,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CustomeText(
-                                text: filterButtonList[index],
-                                color: textColor,
+                              child: Padding(
+                                padding:  EdgeInsets.all(0.5.wp),
+                                child: CustomeText(
+                                  text: filterButtonList[index],
+                                  color: textColor,
+                                  themeStyle: theme.textTheme.titleMedium,
+                                  size: 12,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  );
-                }),
-              )
+                        );
+                      },
+                    );
+                  }),
+                ),
 
-                    //     [
-                    //     InkWell(
-                    //       onTap: () {
-                    //         context.read<FilterButtonBloc>().add(ChangeColor());
-                    //       },
-                    //       child: Container(
-                    //         decoration: BoxDecoration(
-                    //           borderRadius: BorderRadius.circular(2.wp),
-                    //           border: Border.all(
-                    //             color: brdr,
-                    //             width: 0.1.wp,
-                    //           ),
-                    //           color: bgColor,
-                    //         ),
-                    //         child: Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: CustomeText(
-                    //             text: 'Registered',
-                    //             color: textColor,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     SizedBox(width: 1.wp),
-                    //     InkWell(
-                    //       onTap: () {
-                    //         context.read<FilterButtonBloc>().add(ChangeColor());
-                    //       },
-                    //       child: Container(
-                    //         decoration: BoxDecoration(
-                    //           borderRadius: BorderRadius.circular(2.wp),
-                    //           border: Border.all(
-                    //             color: theme.colorScheme.shadow.withOpacity(
-                    //               0.3,
-                    //             ),
-                    //             width: 0.1.wp,
-                    //           ),
-                    //           color: theme.colorScheme.shadow.withOpacity(0.2),
-                    //         ),
-                    //         child: Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: CustomeText(
-                    //             text: 'Regis',
-                    //             color: theme.colorScheme.primary,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     SizedBox(width: 1.wp),
-                    //     InkWell(
-                    //       onTap: () {
-                    //         context.read<FilterButtonBloc>().add(ChangeColor());
-                    //       },
-                    //       child: Container(
-                    //         decoration: BoxDecoration(
-                    //           borderRadius: BorderRadius.circular(2.wp),
-                    //           border: Border.all(
-                    //             color: theme.colorScheme.shadow.withOpacity(
-                    //               0.3,
-                    //             ),
-                    //             width: 0.1.wp,
-                    //           ),
-                    //           color: theme.colorScheme.shadow.withOpacity(0.2),
-                    //         ),
-                    //         child: Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: CustomeText(
-                    //             text: 'Registered',
-                    //             color: theme.colorScheme.primary,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ]
-                    // );
-                  
+                
               ],
             ),
           ),

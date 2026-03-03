@@ -14,6 +14,8 @@ class CustomeText extends StatelessWidget {
   final TextStyle? themeStyle;
   final TextDirection? textDirection;
   final TextDecoration? textDecoration;
+  final TextOverflow? textOverflow;
+  final double? letterSpacing;
   
   const CustomeText({
     super.key,
@@ -23,26 +25,31 @@ class CustomeText extends StatelessWidget {
     this.padding,
     this.themeStyle,
     this.textDirection,
-    this.textDecoration
+    this.textDecoration,
+    this.textOverflow,
+    this.letterSpacing
+
    });   
   @override
   Widget build(BuildContext context) {
 
     ThemeData theme = Theme.of(context);
     Widget content = Text(         
-         //overflow: TextOverflow.ellipsis,
+          
+          overflow: textOverflow,
           text,
           textDirection: textDirection,
           style: (themeStyle?? theme.textTheme.bodySmall)?.copyWith(
           fontSize:
-          size?? 
+          size?? 12,
+          letterSpacing: letterSpacing,
           // 3.sp,        
-          (context.isMobile?
-          11.sp.ap(adaptivePercentage:
-                  const AdaptivePercentage(
-                    tablet:80,
-                   desktop:60,
-          )):12),     
+          // (context.isMobile?
+          // 11.sp.ap(adaptivePercentage:
+          //         const AdaptivePercentage(
+          //           tablet:80,
+          //          desktop:60,
+          // )):12),     
           decoration: textDecoration,    
           color:color          
           ));

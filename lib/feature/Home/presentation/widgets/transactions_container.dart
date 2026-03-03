@@ -28,9 +28,11 @@ class TransactionsContainer extends StatelessWidget {
     ),
     child: ListTile(
       leading: 
-      CircleAvatar(
-        child: SvgPicture.asset('assets/svg/financeBook.svg'),
-      ),
+      Icon(Icons.receipt_long,
+      color:  Color(0xFF1E3A8A),),
+      // CircleAvatar(
+      //   child: SvgPicture.asset('assets/svg/financeBook.svg'),
+      // ),
       title:CustomeText(text: 'SmartATM') ,
       subtitle:Row(
         mainAxisSize: MainAxisSize.min,
@@ -42,7 +44,7 @@ class TransactionsContainer extends StatelessWidget {
         Icon(
           Icons.check_box,
           size: 1.wp,
-          color: theme.colorScheme.primary,
+          color: Color(0xFF1E3A8A)
         )
       ],) ,
       trailing:Row(
@@ -54,7 +56,7 @@ class TransactionsContainer extends StatelessWidget {
           SizedBox(width: 0.5.wp,),
           CustomeText(
             text: 'د.ل',
-            color: theme.colorScheme.primary,
+            color:  Color(0xFF1E3A8A),
             themeStyle: theme.textTheme.titleMedium)
       ],)
        ,

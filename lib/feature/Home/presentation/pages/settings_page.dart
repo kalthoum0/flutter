@@ -4,7 +4,7 @@ import 'package:flutter_application_2/core/router/router.dart';
 import 'package:flutter_application_2/feature/widgets/custome_samll_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screentasia/screentasia.dart';
-import '../../bloc/theme_bloc.dart';
+import '../bloc/theme_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 
 @RoutePage()

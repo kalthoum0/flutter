@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 part 'date_picker_event.dart';
@@ -6,8 +7,10 @@ part 'date_picker_state.dart';
 
 class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   DatePickerBloc() : super(DatePickerInitial()) {
-    on<DatePickerEvent>((event, emit) {
+    on<SelectRange>((event, emit) {
       // TODO: implement event handler
+      emit(DatePickerSelected(event.dateRange));
+
     });
   }
 }

@@ -19,7 +19,9 @@ class HomeDrawer extends StatelessWidget {
     final List<MenuItem> homeMenuItems = [
       MenuItem(icon: Icons.person_2_outlined, label:" البيانات الشخصية", onTap:(){} ),
       MenuItem(icon: Icons.account_balance, label: "فتح حساب مصرفي", onTap: (){} ),
-      MenuItem(icon: Icons.credit_card, label: "أرشيف الكروت", onTap: (){} ),
+      MenuItem(icon: Icons.credit_card, label: "أرشيف الكروت", onTap: (){
+        context.pushRoute(CardPageRoute());
+      } ),
       MenuItem(icon: Icons.person_add_alt_1_outlined, label: "الأصدقاء", onTap: (){} ),
       MenuItem(icon: Icons.settings_outlined , label: "الاعدادات", onTap: (){
         context.pushRoute(SettingsPageRoute());

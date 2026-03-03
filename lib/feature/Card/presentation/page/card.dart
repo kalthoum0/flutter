@@ -123,9 +123,10 @@ class _CardPageState extends State<CardPage> {
                 onPressed: () {
                   //context.back();
                 },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: theme.colorScheme.primary,
+                icon: IconButton(
+                 icon: Icon( Icons.arrow_back_ios,
+                  color: theme.colorScheme.primary,),
+                  onPressed: ()=> context.back(),
                 ),
               ),
               title: Image.asset(

@@ -16,6 +16,8 @@ class Customtextfeild extends StatelessWidget {
   final String? hintText;
   final Color? color;
   final double? height;
+  final bool? enabled;
+  final void Function()? ontap;
 
  
 
@@ -33,12 +35,16 @@ class Customtextfeild extends StatelessWidget {
     this.hintText,
     this.color,
     this.height,
+    this.enabled,
+    this.ontap
  
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(      
+      onTap:ontap ,
+      enabled: enabled,
       controller: controller,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
